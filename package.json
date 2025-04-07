@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/adrianrmz11/timestamper/issues"
   },
-  "homepage": "https://github.com/adrianrmz11/timestamper#readme"
+  "homepage": "https://github.com/adrianrmz11/timestamper#readme",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  }
 }
