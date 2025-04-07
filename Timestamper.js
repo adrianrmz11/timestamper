@@ -94,7 +94,7 @@ class Timestamper {
             throw new Error("Timestamp cannot be NaN.");
         }
 
-        if (!isFinite(timestamp)) {
+        if (!isFinite(timestampEntry)) {
             throw new Error("Timestamp must be a finite number. Received Infinity.");
         }
     }
@@ -247,12 +247,14 @@ class Timestamper {
      * Timestamper.toCounter() = "1:00:00:00" // 1 day
      */
     toCounter() {
+        const l = Object.keys(timeUnits).length;
+
         return Object.values(this._parsedTimestamp)
             .slice(0, 6)
             .reverse()
             .filter(x => x !== 0)
             .map((x, i, a) => {
-                var dx = Math.round(x % timeUnits[l.length - 1 - (i + l.length - a.length)]);
+                var dx = Math.round(x % timeUnits[l - 1 - (i + l - a.length)]);
                     dx = isNaN(dx) ? x : dx;
 
                 return dx < 10 ? `0${dx}` : dx;
